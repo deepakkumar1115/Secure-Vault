@@ -1,0 +1,7 @@
+{
+  "name": "Secure Vault",
+  "description": "100% Offline, Zero-Knowledge Password & Credential Storage. Ultra-secure hardware-encrypted Android application.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+ 
