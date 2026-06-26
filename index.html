@@ -164,6 +164,18 @@
             </div>
           </div>
 
+          <!-- Visitor Counter -->
+          <div class="flex items-center gap-3 pt-1">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+            </span>
+            <span class="text-[11px] font-mono text-slate-400">
+              <span id="visitor-count" class="font-bold text-[#d0bfff]">—</span>
+              <span> total visits</span>
+            </span>
+          </div>
+
           <!-- Action Buttons -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
             <a href="#download" class="px-8 py-4 bg-[#d0bfff] hover:bg-white text-[#0a0a0c] font-bold rounded-xl text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_30px_rgba(208,191,255,0.2)]">
@@ -1121,6 +1133,21 @@
 
       </div>
     </footer>
+
+    <!-- Visitor Counter Logic -->
+    <script>
+      (function () {
+        fetch('/api/visitor-count', { method: 'POST' })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            var el = document.getElementById('visitor-count');
+            if (el && typeof data.count === 'number') {
+              el.textContent = data.count.toLocaleString();
+            }
+          })
+          .catch(function () {});
+      })();
+    </script>
 
     <!-- Vanilla Javascript Logic -->
     <script>
